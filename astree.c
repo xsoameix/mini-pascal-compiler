@@ -65,6 +65,19 @@ VARDEF *make_vardef (TYPE *t)
   return v;
 }
 
+PROCFUNCDEF *make_procfuncdef (DECLLIST *dl, IDENT *ret, BLOCK *b)
+{
+  PROCFUNCDEF *p = anew (PROCFUNCDEF);
+  p->proc_formals     = dl;
+  p->proc_result_type = ret ? make_id_type (ret) : 0;
+  p->proc_block       = b;
+  p->proc_syminfo     = 0;
+  p->proc_formals_result_size = 0;
+  p->proc_result_addr = 0;
+  p->proc_top_label   = 0;
+  return p;
+}
+
 FORMAL *make_formal (MODEWHICH m, TYPE *t)
 {
   FORMAL *f = anew (FORMAL);
@@ -80,6 +93,13 @@ DECL *make_var_decl (IDENT *id, TYPE *t)
 {
   DECL *d = make_decl (DeclVar_, id);
   d->d.var = make_vardef(t);
+  return d;
+}
+
+DECL *make_procfunc_decl (IDENT *id, DECLLIST *dl, IDENT *ret, BLOCK *b)
+{
+  DECL *d = make_decl (DeclProcFunc_, id);
+  d->d.proc = make_procfuncdef(dl, ret, b);
   return d;
 }
 

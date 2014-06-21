@@ -1713,7 +1713,7 @@ yyreduce:
 
   case 52:
 #line 283 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.decl_) = make_procfunc_decl ((yyvsp[-4].id), (yyvsp[-3].decllist_), 0, (yyvsp[-1].block_)); }
 #line 1718 "parse.tab.c" /* yacc.c:1646  */
     break;
 
@@ -1799,7 +1799,7 @@ yyreduce:
 
   case 65:
 #line 338 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.decl_) = make_procfunc_decl ((yyvsp[-6].id), (yyvsp[-5].decllist_), (yyvsp[-3].id), (yyvsp[-1].block_)); }
 #line 1804 "parse.tab.c" /* yacc.c:1646  */
     break;
 
