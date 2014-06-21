@@ -211,13 +211,13 @@ Type
         */
         : SimpleType
         | ARRAY_ '[' SimpleType EltType
-          { $$ = make_typearray($1, $2); }
+          { $$ = make_array_type($3, $4); }
         | RECORD_ FieldList END_
-          { $$ =  }
+          { $$ = make_record_type($2); }
         | RECORD_ END_
-          { }
+          { $$ = 0; }
         | '^' ID_
-          { }
+          { $$ = make_id_type($2); }
         | error
           { $$ = the_err_type; }
         ;
@@ -230,7 +230,7 @@ EltType
           Feature 3 (continue)
           Call your pre-implemented function here.
         */
-          { }
+          { $$ = make_array_type($2, $3); }
         ;
 
 SimpleType
@@ -256,11 +256,11 @@ FieldList
           Hint: You can read FIELD and FIELDLIST which pre-defined in struct.h.
         */
         : ID_ ':' Type OptFieldList
-          { }
+          { $$ = make_fieldlist (make_field ($1, $3), $4); }
         | ID_ ',' FieldList
-          { }
+          { $$ = make_fieldlist (make_field ($1, $3->this->field_type), $3); }
         | error
-          { }
+          { $$ = 0; }
         ;
 
 OptFieldList

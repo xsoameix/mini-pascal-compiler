@@ -1605,25 +1605,25 @@ yyreduce:
 
   case 34:
 #line 214 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.type_) = make_array_type((yyvsp[-1].type_), (yyvsp[0].type_)); }
 #line 1610 "parse.tab.c" /* yacc.c:1646  */
     break;
 
   case 35:
 #line 216 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.type_) = make_record_type((yyvsp[-1].fieldlist_)); }
 #line 1616 "parse.tab.c" /* yacc.c:1646  */
     break;
 
   case 36:
 #line 218 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.type_) = 0; }
 #line 1622 "parse.tab.c" /* yacc.c:1646  */
     break;
 
   case 37:
 #line 220 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.type_) = make_id_type((yyvsp[0].id)); }
 #line 1628 "parse.tab.c" /* yacc.c:1646  */
     break;
 
@@ -1641,7 +1641,7 @@ yyreduce:
 
   case 40:
 #line 233 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.type_) = make_array_type((yyvsp[-1].type_), (yyvsp[0].type_)); }
 #line 1646 "parse.tab.c" /* yacc.c:1646  */
     break;
 
@@ -1677,19 +1677,19 @@ yyreduce:
 
   case 46:
 #line 259 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.fieldlist_) = make_fieldlist (make_field ((yyvsp[-3].id), (yyvsp[-1].type_)), (yyvsp[0].fieldlist_)); }
 #line 1682 "parse.tab.c" /* yacc.c:1646  */
     break;
 
   case 47:
 #line 261 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.fieldlist_) = make_fieldlist (make_field ((yyvsp[-2].id), (yyvsp[0].fieldlist_)->this->field_type), (yyvsp[0].fieldlist_)); }
 #line 1688 "parse.tab.c" /* yacc.c:1646  */
     break;
 
   case 48:
 #line 263 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.fieldlist_) = 0; }
 #line 1694 "parse.tab.c" /* yacc.c:1646  */
     break;
 

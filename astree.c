@@ -152,7 +152,42 @@ TYPEARRAY *make_typearray (TYPE *idx, TYPE *elt)
   return ta;
 }
 
+FIELD *make_field (IDENT *id, TYPE *t)
+{
+  FIELD *f = anew (FIELD);
+  f->field_id     = id;
+  f->field_type   = t;
+  f->field_offset = 0;
+  return f;
+}
+
+FIELDLIST *make_fieldlist (FIELD *f, FIELDLIST *fl)
+{
+  if (f == 0)
+    return fl;
+  else {
+    FIELDLIST *new = anew (FIELDLIST);
+    new->this = f;
+    new->rest = fl;
+    return new;
+  }
+}
+
 /* specific TYPE constructors */
+
+TYPE *make_array_type (TYPE *idx, TYPE *elt)
+{
+  TYPE *ary = make_type (TypeArray_);
+  ary->t.arr = make_typearray(idx, elt);
+  return ary;
+}
+
+TYPE *make_record_type (FIELDLIST *fl)
+{
+  TYPE *re = make_type (TypeRecord_);
+  re->t.rec = make_fieldlist(0, fl);
+  return re;
+}
 
 TYPE *make_bind_type (BINDING *b)
 {
