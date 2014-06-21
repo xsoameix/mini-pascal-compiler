@@ -1,0 +1,15 @@
+*~
+*.o
+*.a
+
+# executable
+mpc
+standard_mpc
+
+# autotools
+
+Makefile
+
+# vim
+
+*.swp
