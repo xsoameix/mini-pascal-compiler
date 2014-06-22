@@ -538,7 +538,7 @@ RepeatStatement
           Fill the following rule action and implement the function in astree.c 
           if you need.
         */
-         { }
+         { $$ = make_repeat_stmt ($2, $4); }
         ;
 
 ForStatement

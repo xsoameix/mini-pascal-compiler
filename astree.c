@@ -309,6 +309,14 @@ STMTWHILE *make_stmtwhile (EXPR *test, STMT *body)
   return w;
 }
 
+STMTREPEAT *make_stmtrepeat (STMTLIST *sl, EXPR *test)
+{
+  STMTREPEAT *r = anew (STMTREPEAT);
+  r->rpt_expr  = test;
+  r->rpt_stmts = sl;
+  return r;
+}
+
 /* specific STMT constructors */
 
 STMT *make_compound_stmt (STMTLIST *sl)
@@ -350,6 +358,13 @@ STMT *make_whilestmt (EXPR *test, STMT *body)
 {
   STMT *s = make_stmt (StmtWhile_);
   s->s.wh = make_stmtwhile (test, body);
+  return s;	
+}
+
+STMT *make_repeat_stmt (STMTLIST *sl, EXPR *test)
+{
+  STMT *s = make_stmt (StmtRepeat_);
+  s->s.rpt = make_stmtrepeat (sl, test);
   return s;	
 }
 

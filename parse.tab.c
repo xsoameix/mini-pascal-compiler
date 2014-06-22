@@ -2033,7 +2033,7 @@ yyreduce:
 
   case 129:
 #line 541 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.stmt_) = make_repeat_stmt ((yyvsp[-2].stmtlist_), (yyvsp[0].expr_)); }
 #line 2038 "parse.tab.c" /* yacc.c:1646  */
     break;
 
