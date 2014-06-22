@@ -264,6 +264,15 @@ STMTLIST *make_stmtlist (STMT *s, STMTLIST *sl)
 
 /* STMT helper constructors */
 
+STMTIF *make_stmtif (EXPR *v, STMT *iph, STMT *el)
+{
+  STMTIF *s = anew (STMTIF);
+  s->if_expr = v;
+  s->if_then = iph;
+  s->if_else = el;
+  return s;
+}
+
 STMTASSIGN *make_stmtassign (EXPR *v, EXPR *e)
 {
   STMTASSIGN *a = anew (STMTASSIGN);
@@ -290,10 +299,17 @@ STMTWHILE *make_stmtwhile (EXPR *test, STMT *body)
 
 /* specific STMT constructors */
 
-STMT *make_stmtcompound (STMTLIST *sl)
+STMT *make_compound_stmt (STMTLIST *sl)
 {
   STMT *s = make_stmt (StmtCompound_);
   s->s.comp = sl;
+  return s;
+}
+
+STMT *make_if_stmt (EXPR *v, STMT *iph, STMT *el)
+{
+  STMT *s = make_stmt (StmtIf_);
+  s->s.ifx = make_stmtif(v, iph, el);
   return s;
 }
 

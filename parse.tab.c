@@ -1937,7 +1937,7 @@ yyreduce:
 
   case 113:
 #line 442 "parse.y" /* yacc.c:1646  */
-    { (yyval.stmt_) = make_stmtcompound ((yyvsp[-1].stmtlist_)); }
+    { (yyval.stmt_) = make_compound_stmt ((yyvsp[-1].stmtlist_)); }
 #line 1942 "parse.tab.c" /* yacc.c:1646  */
     break;
 
@@ -1955,7 +1955,7 @@ yyreduce:
 
   case 116:
 #line 466 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.stmt_) = make_if_stmt ((yyvsp[-3].expr_), (yyvsp[-1].stmt_), (yyvsp[0].stmt_)); }
 #line 1960 "parse.tab.c" /* yacc.c:1646  */
     break;
 
