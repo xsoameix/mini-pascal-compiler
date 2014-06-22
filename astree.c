@@ -250,6 +250,18 @@ STMT *make_stmt (STMTKIND k)
   return s;
 }
 
+STMTLIST *make_stmtlist (STMT *s, STMTLIST *sl)
+{
+  if (s == 0)
+    return sl;
+  else {
+    STMTLIST *new = anew (STMTLIST);
+    new->this = s;
+    new->rest = sl;
+    return new;
+  }
+}
+
 /* STMT helper constructors */
 
 STMTASSIGN *make_stmtassign (EXPR *v, EXPR *e)
@@ -277,6 +289,13 @@ STMTWHILE *make_stmtwhile (EXPR *test, STMT *body)
 }
 
 /* specific STMT constructors */
+
+STMT *make_stmtcompound (STMTLIST *sl)
+{
+  STMT *s = make_stmt (StmtCompound_);
+  s->s.comp = sl;
+  return s;
+}
 
 STMT *make_assign_stmt (EXPR *v, EXPR *e)
 {

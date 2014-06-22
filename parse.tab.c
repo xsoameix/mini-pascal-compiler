@@ -1937,19 +1937,19 @@ yyreduce:
 
   case 113:
 #line 442 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.stmt_) = make_stmtcompound ((yyvsp[-1].stmtlist_)); }
 #line 1942 "parse.tab.c" /* yacc.c:1646  */
     break;
 
   case 114:
 #line 451 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.stmtlist_) = make_stmtlist ((yyvsp[0].stmt_), 0); }
 #line 1948 "parse.tab.c" /* yacc.c:1646  */
     break;
 
   case 115:
 #line 457 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.stmtlist_) = make_stmtlist ((yyvsp[-2].stmt_), (yyvsp[0].stmtlist_)); }
 #line 1954 "parse.tab.c" /* yacc.c:1646  */
     break;
 

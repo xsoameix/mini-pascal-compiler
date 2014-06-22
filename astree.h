@@ -39,6 +39,7 @@ extern TYPE *make_range_type   (EXPR *lo, EXPR *hi);
 /* STMT routines */
 
 extern STMT     *make_stmt     (STMTKIND k);
+extern STMTLIST *make_stmtlist (STMT *s, STMTLIST *sl);
 
 extern STMTASSIGN *make_stmtassign (EXPR *v, EXPR *e);
 extern STMTWHILE  *make_stmtwhile  (EXPR *test, STMT *body);
@@ -46,6 +47,7 @@ extern STMTCASE   *make_stmtcase   (EXPR *expr, CASELIST *list);
 
 /* statement constructor functions */
 
+extern STMT *make_stmtcompound (STMTLIST *sl);
 extern STMT *make_assign_stmt  (EXPR *v, EXPR *e);
 extern STMT *make_whilestmt    (EXPR *test, STMT *body);
 extern STMT *make_call_stmt    (EXPR *e);
