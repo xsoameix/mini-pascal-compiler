@@ -1973,43 +1973,43 @@ yyreduce:
 
   case 119:
 #line 483 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.stmt_) = make_case_stmt ((yyvsp[-3].expr_), (yyvsp[-1].caselist_)); }
 #line 1978 "parse.tab.c" /* yacc.c:1646  */
     break;
 
   case 120:
 #line 493 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.caselist_) = make_caselist ((yyvsp[-1].casearm_), (yyvsp[0].caselist_)); }
 #line 1984 "parse.tab.c" /* yacc.c:1646  */
     break;
 
   case 121:
 #line 503 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.caselist_) = 0; }
 #line 1990 "parse.tab.c" /* yacc.c:1646  */
     break;
 
   case 122:
 #line 505 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.caselist_) = 0; }
 #line 1996 "parse.tab.c" /* yacc.c:1646  */
     break;
 
   case 123:
 #line 507 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.caselist_) = (yyvsp[0].caselist_); }
 #line 2002 "parse.tab.c" /* yacc.c:1646  */
     break;
 
   case 124:
 #line 517 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.casearm_) = make_casearm ((yyvsp[-2].exprlist_), (yyvsp[0].stmt_)); }
 #line 2008 "parse.tab.c" /* yacc.c:1646  */
     break;
 
   case 125:
 #line 519 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.casearm_) = 0; }
 #line 2014 "parse.tab.c" /* yacc.c:1646  */
     break;
 

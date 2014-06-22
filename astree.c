@@ -183,14 +183,10 @@ FIELD *make_field (IDENT *id, TYPE *t)
 
 FIELDLIST *make_fieldlist (FIELD *f, FIELDLIST *fl)
 {
-  if (f == 0)
-    return fl;
-  else {
-    FIELDLIST *new = anew (FIELDLIST);
-    new->this = f;
-    new->rest = fl;
-    return new;
-  }
+  FIELDLIST *new = anew (FIELDLIST);
+  new->this = f;
+  new->rest = fl;
+  return new;
 }
 
 /* specific TYPE constructors */
@@ -289,6 +285,22 @@ STMTCASE *make_stmtcase (EXPR *expr, CASELIST *list)
   return c;
 }
 
+CASELIST *make_caselist (CASEARM *this, CASELIST *rest)
+{
+  CASELIST *cl = anew (CASELIST);
+  cl->this = this;
+  cl->rest = rest;
+  return cl;
+}
+
+CASEARM *make_casearm (EXPRLIST *l, STMT *s)
+{
+  CASEARM *c = anew (CASEARM);
+  c->arm_labels = l;
+  c->arm_stmt = s;
+  return c;
+}
+
 STMTWHILE *make_stmtwhile (EXPR *test, STMT *body)
 {
   STMTWHILE *w = anew (STMTWHILE);
@@ -310,6 +322,13 @@ STMT *make_if_stmt (EXPR *v, STMT *iph, STMT *el)
 {
   STMT *s = make_stmt (StmtIf_);
   s->s.ifx = make_stmtif(v, iph, el);
+  return s;
+}
+
+STMT *make_case_stmt (EXPR *v, CASELIST *cl)
+{
+  STMT *s = make_stmt (StmtCase_);
+  s->s.cas = make_stmtcase(v, cl);
   return s;
 }
 

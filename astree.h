@@ -43,6 +43,9 @@ extern STMTLIST *make_stmtlist (STMT *s, STMTLIST *sl);
 
 extern STMTIF     *make_stmtif     (EXPR *v, STMT *iph, STMT *el);
 extern STMTASSIGN *make_stmtassign (EXPR *v, EXPR *e);
+extern STMTCASE   *make_stmtcase   (EXPR *expr, CASELIST *list);
+extern CASELIST   *make_caselist   (CASEARM *this, CASELIST *rest);
+extern CASEARM    *make_casearm    (EXPRLIST *l, STMT *s);
 extern STMTWHILE  *make_stmtwhile  (EXPR *test, STMT *body);
 extern STMTCASE   *make_stmtcase   (EXPR *expr, CASELIST *list);
 
@@ -50,6 +53,7 @@ extern STMTCASE   *make_stmtcase   (EXPR *expr, CASELIST *list);
 
 extern STMT *make_compound_stmt (STMTLIST *sl);
 extern STMT *make_if_stmt       (EXPR *v, STMT *iph, STMT *el);
+extern STMT *make_case_stmt     (EXPR *v, CASELIST *cl);
 extern STMT *make_assign_stmt   (EXPR *v, EXPR *e);
 extern STMT *make_whilestmt     (EXPR *test, STMT *body);
 extern STMT *make_call_stmt     (EXPR *e);
