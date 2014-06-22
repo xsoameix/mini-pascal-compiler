@@ -549,7 +549,7 @@ ForStatement
           Fill the following rule action and implement the function in astree.c 
           if you need.
         */
-         { }
+         { $$ = make_for_stmt ($2, $4, $5 == TO_ ? TRUE : FALSE, $6, $8); }
         ;
 
 Direction

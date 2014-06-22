@@ -49,6 +49,7 @@ extern CASEARM    *make_casearm    (EXPRLIST *l, STMT *s);
 extern STMTWHILE  *make_stmtwhile  (EXPR *test, STMT *body);
 extern STMTCASE   *make_stmtcase   (EXPR *expr, CASELIST *list);
 extern STMTREPEAT *make_stmtrepeat (STMTLIST *sl, EXPR *test);
+extern STMTFOR    *make_stmtfor    (IDENT *id, EXPR *init, BOOLEAN up, EXPR *to, STMT *s);
 
 /* statement constructor functions */
 
@@ -59,6 +60,7 @@ extern STMT *make_assign_stmt   (EXPR *v, EXPR *e);
 extern STMT *make_whilestmt     (EXPR *test, STMT *body);
 extern STMT *make_call_stmt     (EXPR *e);
 extern STMT *make_repeat_stmt   (STMTLIST *sl, EXPR *test);
+extern STMT *make_for_stmt      (IDENT *id, EXPR *init, BOOLEAN up, EXPR *to, STMT *s);
 
 /* general functions */
 

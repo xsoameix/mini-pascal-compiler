@@ -2039,7 +2039,7 @@ yyreduce:
 
   case 130:
 #line 552 "parse.y" /* yacc.c:1646  */
-    { }
+    { (yyval.stmt_) = make_for_stmt ((yyvsp[-6].id), (yyvsp[-4].expr_), (yyvsp[-3].ival) == TO_ ? TRUE : FALSE, (yyvsp[-2].expr_), (yyvsp[0].stmt_)); }
 #line 2044 "parse.tab.c" /* yacc.c:1646  */
     break;
 

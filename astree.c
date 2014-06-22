@@ -317,6 +317,18 @@ STMTREPEAT *make_stmtrepeat (STMTLIST *sl, EXPR *test)
   return r;
 }
 
+STMTFOR *make_stmtfor (IDENT *id, EXPR *init, BOOLEAN up, EXPR *to, STMT *s)
+{
+  STMTFOR *f = anew (STMTFOR);
+  f->for_name = make_binding(id);
+  f->for_init = init;
+  f->for_to = to;
+  f->for_limit_obj = 0;
+  f->for_stmt = s;
+  f->for_upward = up;
+  return f;
+}
+
 /* specific STMT constructors */
 
 STMT *make_compound_stmt (STMTLIST *sl)
@@ -365,6 +377,13 @@ STMT *make_repeat_stmt (STMTLIST *sl, EXPR *test)
 {
   STMT *s = make_stmt (StmtRepeat_);
   s->s.rpt = make_stmtrepeat (sl, test);
+  return s;	
+}
+
+STMT *make_for_stmt (IDENT *id, EXPR *init, BOOLEAN up, EXPR *to, STMT *stmt)
+{
+  STMT *s = make_stmt (StmtFor_);
+  s->s.forx = make_stmtfor (id, init, up, to, stmt);
   return s;	
 }
 
